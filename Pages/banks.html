@@ -7,31 +7,32 @@
         <p class="lead">A simple way to locate Blood Banks, with Manual Entries or based on Geolocation</p>
     </div>
 </div>
-<div class="container form-donation my-4 py-3">
-  <div class="card text-center">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Manual</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-danger" href="#">Geolocation</a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">
-        <div class="form-row">
-          <div class="form-group col-md-6">
+
+<div class="row mb-5 mx-3">
+  <div class="col-12 col-sm-6 col-md-6 pt-2">
+    <div class="card">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Manual</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="#">Geolocation</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body text-left" style=" width: 100%; height: 300px;">
+        <h4 class="card-title">Search Blood Bank</h5>
+        <p class="card-text">
+          <div class="form-group col-md-12">
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Select State/U.T.</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>None</option>
+              <label for="stateSelection">Select State/U.T.</label>
+              <select class="form-control" id="stateSelector">
+                <option value="" selected>None</option><option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option><option value="Andhra Pradesh">Andhra Pradesh</option><option value="Arunachal Pradesh">Arunachal Pradesh</option><option value="Assam">Assam</option><option value="Bihar">Bihar</option><option value="Chandigarh">Chandigarh</option><option value="Chhattisgarh">Chhattisgarh</option><option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option><option value="Daman and Diu">Daman and Diu</option><option value="Delhi">Delhi</option><option value="Goa">Goa</option><option value="Gujarat">Gujarat</option><option value="Haryana">Haryana</option><option value="Himachal Pradesh">Himachal Pradesh</option><option value="Jammu and Kashmir">Jammu and Kashmir</option><option value="Jharkhand">Jharkhand</option><option value="Karnataka">Karnataka</option><option value="Kerala">Kerala</option><option value="Lakshadweep">Lakshadweep</option><option value="Madhya Pradesh">Madhya Pradesh</option><option value="Maharashtra">Maharashtra</option><option value="Manipur">Manipur</option><option value="Meghalaya">Meghalaya</option><option value="Mizoram">Mizoram</option><option value="Nagaland">Nagaland</option><option value="Orissa">Orissa</option><option value="Pondicherry">Pondicherry</option><option value="Punjab">Punjab</option><option value="Rajasthan">Rajasthan</option><option value="Sikkim">Sikkim</option><option value="Tamil Nadu">Tamil Nadu</option><option value="Tripura">Tripura</option><option value="Uttaranchal">Uttaranchal</option><option value="Uttar Pradesh">Uttar Pradesh</option><option value="West Bengal">West Bengal</option>
               </select>
             </div>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-12">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Select Location</label>
               <select class="form-control" id="exampleFormControlSelect1">
@@ -39,115 +40,19 @@
               </select>
             </div>
           </div>
-        </div>
-      </p>
-      <a href="#" class="btn btn-danger">Locate Bank</a>
+        </p>
+        <a href="#" class="btn btn-danger float-left">Locate Bank</a>
+      </div>
     </div>
   </div>
+
+  <div class="col-12 col-sm-6 col-md-6 pt-2">
+    <div class="card">
+      <div class="card-header text-danger">
+        Location of Blood Banks
+      </div>
+      <div class="card-body">
+        <iframe name="frame1" src="https://www.google.co.in/maps/d/embed?mid=1lreC0AizZMjHtCuOlcyA-B3HnLI" style="height: 260px; border:none;"></iframe>
+      </div>
+    </div>
 </div>
-
-<div class="container">
-  <div id="maphead">
-    <h1><u><center>Site Map for Blood donation location</center></u></h1><br><h3> &#9759 Click on top left button to see all location</h3>
-  </div>
-  <div id="site_map">
-    <iframe name="frame1" src="https://www.google.co.in/maps/d/embed?mid=1lreC0AizZMjHtCuOlcyA-B3HnLI" width="1100" height="500" style="border:none; opacity:0.7;">
-    </iframe>
-  <div> <br>
-
-  <h2>Blood camps</h2>
-
-  <p>The following is the list of major blood camps in different sates and their details</p>
-  <table width="700" style="background-color:white; opacity:0.7; text-align:center;">
-    <tbody>
-      <tr style="font-weight:bold;">
-        <td>SR.NO.</td>
-        <td>STATE</td>
-        <td>CITY</td>
-        <td>MANAGER</td>
-        <td>CONTACT NO.</td>
-      </tr>
-
-      <tr>
-        <td>1</td>
-        <td>PUNJAB</td>
-        <td>JALANDHAR</td>
-        <td>RAMAN PREET</td>
-        <td>8975845899</td>
-      </tr>
-
-      <tr>
-        <td>2</td>
-        <td>DELHI</td>
-        <td>NEW DELHI</td>
-        <td>TANYA</td>
-        <td>8365488596</td>
-      </tr>
-
-      <tr>
-        <td>3</td>
-        <td>ANDHRA PRADESH</td>
-        <td>VIJAYAWADA</td>
-        <td>PRASAD KUMAR</td>
-        <td>7878965897</td>
-      </tr>
-
-      <tr>
-        <td>4</td>
-        <td>TELANGANA</td>
-        <td>HYDERABAD</td>
-        <td>VAIKUNTAM</td>
-        <td>9989693696</td>
-      </tr>
-
-      <tr>
-        <td>5</td>
-        <td>TAMIL NADU</td>
-        <td>CHENNAI</td>
-        <td>PANEER SELVAM</td>
-        <td>8888999966</td>
-      </tr>
-
-      <tr>
-        <td>6</td>
-        <td>ORISSA</td>
-        <td>BHUVANESWAR</td>
-        <td>PRATHI ADHARSH</td>
-        <td>8998697845</td>
-      </tr>
-
-      <tr>
-        <td>7</td>
-        <td>MAHARASHTRA</td>
-        <td>MUMBAI</td>
-        <td>PRIYANKA RUTH</td>
-        <td>9848032919</td>
-      </tr>
-
-      <tr>
-        <td>8</td>
-        <td>HIMACHAL PRADESH</td>
-        <td>DALHOUSIE</td>
-        <td>DEEPTHI SHARMA</td>
-        <td>7899874567</td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>RAJASTHAN</td>
-        <td>JAIPUR</td>
-        <td>SHIVAM BHATRA</td>
-        <td>9989889945</td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>MANIPUR</td>
-        <td>SHIRAJPUR</td>
-        <td>JIMSON NGANGOM</td>
-        <td>9789747845</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-</div>
-</div>
-</section>

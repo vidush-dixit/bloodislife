@@ -1,3 +1,11 @@
+// ======================
+// Navbar Active Link Changer
+
+$('.navbar-nav > li').on('click', function(e) {
+    $('.navbar-nav > li').removeClass('active');
+    $(this).addClass('active');
+});
+
 // =======================
 // Read More Functionality
 
@@ -17,51 +25,55 @@ function readMore(x) {
     }
 }
 
-// =======================
-// Sign Up Form Validation
-
-$(document).ready(function() {
-    $(".signupBtn").click(function() {
-        var email = $("input[name='email']").val();
-        var password = $("input[name='passw']").val();
-        var bloodgrp = $("input[name='bloodGrp']").val();
-        var msg = "";
-        if (email == '' || password == '' || bloodgrp == '') {
-            msg = "Please fill all fields!";
-        }
-        else if ((password.length) < 8) {
-            msg = "Password should at least 8 character in length!";
-        }
-        else {
-            msg = 'You have Successfully Registered...';
-            $("#userRegistration").reset();
-        }
-        $('#suggestionAlert').addClass('show').removeClass('close').text(msg);
-    });
-});
-
 // ===========================
 // SignUp Form Container Toggle
-function openModal(){
-    var modal = document.getElementById('signUp_form');
+
+function openSignUp(){
+    var modal = document.getElementById('form-wrap');
     modal.style.display='block';
 }
 
+// =======================
+// Sign Up Form Validation
+
+$("#signUpBtn").submit(function(e) {
+    e.preventDefault();
+    console.log("Submission Tried");
+    var email = $("input[name='email']").val();
+    var password = $("input[name='passw']").val();
+    var bloodgrp = $("input[name='bloodGrp']").val();
+    var msg = "";
+    
+    if (email == '' || password == '' || bloodgrp == '') {
+        msg = "Please fill all fields!";
+        console.log(msg);
+    }
+    else if ((password.length) < 8) {
+        msg = "Password should at least 8 character in length!";
+        console.log(msg);
+    }
+    else {
+        msg = 'You have Successfully Registered...';
+        console.log(msg);
+        $("#userRegistration").reset();
+    }
+});
+
 // ===========================
 // Suggestions Form Validation
+
 function suggestions(){
-    var text = document.getElementById('suggestionText');
+    var text = document.getElementById('suggestionText').value;
     var check = document.getElementById('suggestionCheck').checked;
     var warning = document.getElementById('suggestionAlert');
-    if(check == true && text!=''){
+    if(check == true && text.length>5){
         warning.className = "alert alert-success";
         warning.innerHTML = "Suggestion Recorded!!";
         warning.style.display = 'block';
-        
     }
     else{
         warning.className = "alert alert-warning";
-        warning.innerHTML = "Incorrect Format!!";
+        warning.innerHTML = "Must be at least 5 Characters!!";
         warning.style.display = 'block';
     }
     setTimeout(function(){
