@@ -1,303 +1,369 @@
-/* ============== */
-* {
-    box-sizing: border-box;
-}
-
-/* Style the body */
-body {
-    font-family: Arial, Helvetica, sans-serif;
+*{
     margin: 0;
     padding: 0;
 }
-
+    
 /* ================== */
 /* Custom Scroll Bar */
+
 ::-webkit-scrollbar {
     width: 15px;
     background: transparent;
     opacity: 0;
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 1px grey; 
     background: black;
 }
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom,#000, red); 
+    background: linear-gradient(to bottom, red, #000); 
     border-radius: 10px;
 }
-
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, red, #000);
+    background: linear-gradient(to bottom,#000, red);
 }
 
-/* ================= */
-/* Header/logo Title */
-.header {
+/* ============================= */
+/* ======== Slideshow ========== */
+
+.carousel-indicators li {
+    background-color: rgb(148, 18, 18);
+}
+.carousel-indicators .active {
+    background-color: darkred;
+}
+#carouselExampleInterval{
     width: 100%;
+    height: 640px;
+    overflow: hidden;
+    z-index: 8;
+}
+
+/* ============================= */
+/* ====== Circular Icons ======= */
+
+.imageIcon
+{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    color: white;
+}
+
+/* ========================== */
+/* == Navbar Customization == */
+
+.nb{
+    box-shadow: 0px 0px 10px 8px #000;
+    z-index: 10;
+    background-image: linear-gradient(to bottom right,#000 40%, red);	
+}
+
+/* Navigation Transition Effects */
+.pop-nav
+{
+	transition: .5s;
+}
+.pop-nav:hover{
+    text-decoration: underline;
+	transform: scale(1.2);
+	font-weight: bold;
+}
+
+/* ====================================== */
+/* ========= Cards Popup Effect ========= */
+.pop-card{
     height: 100%;
+    transition: .3s;
+    box-shadow: 0px 0px 10px 2px #aaa;
 }
 
-/* Slideshow container */
-.slideshow-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
+.pop-card:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px 5px #999;
 }
 
-/* Slideshow  */
-.mySlides {
-    display: none;
-    width:100%;
-    height:100%;
-}
-.mySlides img {
-    width:100%;
-    height:100%;
+/* =============================== */
+/* ====== Transition Effects ===== */
+.pop-trans{
+    transition: .3s;
+    box-shadow: 0px 0px 10px 2px #aaa;
 }
 
-/* Fading animation */
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 2s;
-    animation-name: fade;
-    animation-duration: 3s;
-    transition: opacity 5s ease-in-out;
-}
-@-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-}
-@keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-}
-
-/* Caption text */
-.text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-}
-
-/* The dots/bullets/indicators */
-.slide-indicator{
-    position: absolute;
-    right: 0;
-    top: 50%;
-}
-.bar {
-    display: block;
-    cursor: pointer;
-    height: 2px;
-    width: 40px;
-    text-align: right;
-    margin: 10px 2px;
-    background-color: #bbb;
-    transition: background-color 0.8s ease-in-out;
-}
-.activebar, .bar:hover {
-    background: linear-gradient(to right, red, #000, red);
-}
-.activebar{
-    width: 70px;
-    transform: translateX(-50%);
+.pop-trans:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px 5px #999;
 }
 
 /* ============================ */
-/* Style the top navigation bar */
+/* ===== Read More Buttons ==== */
+[id^=moreText] {
+    display: none;
+}
 
-.main-navbar {
-    overflow: hidden;
+/* ======== Forms ============ */
+/* = Full-width input fields = */
+
+.inp-txt, .inp-pass {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+  
+/* Add a background color when the inputs get focus */
+.inp-txt:focus, .inp-pass:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* ========= SignUp Form =========  */
+/* Float cancel and signup buttons and add an equal width */
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 500; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5dec;
+    padding-top: 40px;
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 1% auto auto auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+  
+.close:hover, .close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+/* Add padding to container elements */
+.formContainer {
+    padding: 12px;
+}
+
+/* ===== Form Header ======= */
+.formHeader{
     background-color: #333;
-    box-shadow: 4px 4px 7px;
+    color: #ddd;
 }
 
-.main-navbar .left-span{
-    width: 60%;
-}
-.main-navbar .right-span{
-    width: 40%;
-}
-  
-.main-navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-  
-.activeNav {
+.cancelBtn, .signupBtn {
     background-color: #4CAF50;
     color: white;
-  }
-  
-.main-navbar .icon {
-    display: none;
-    float: right;
-}
-  
-.dropdown {
-    float: left;
-    overflow: hidden;
-}
-  
-.dropdown .dropbtn {
-    font-size: 17px;    
+    padding: 14px 20px;
+    margin: 8px 0;
     border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-}
-  
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-  
-.dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-  
-.main-navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #555;
-    color: white;
-}
-  
-.dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-}
-  
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-#webSearch {
-    width: 130px;
-    float: right;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 25px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('../icons/search-glass.svg');
-    background-size: 20px;
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-  
-#webSearch:focus {
+    cursor: pointer;
+    float: left;
     width: 50%;
-    outline: none;
+    opacity: 0.9;
 }
-  
-@media screen and (max-width: 600px) {
-    .main-navbar a:not(.activeNav), .dropdown .dropbtn {
-      display: none;
-    }
-    .main-navbar a.icon {
-        display: block;
-    }
+.cancelBtn:hover, .signupBtn:hover{
+    opacity: 1;
 }
-  
-@media screen and (max-width: 600px) {
-    .main-navbar.responsive {position: relative;}
-    .main-navbar.responsive .icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .main-navbar.responsive a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-    .main-navbar.responsive .dropdown {float: none;}
-    .main-navbar.responsive .dropdown-content {position: relative;}
-    .main-navbar.responsive .dropdown .dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
+/* Extra styles for the cancel button */
+.cancelBtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+} 
+/* Style the horizontal ruler */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+ 
+/* Clear floats for Sign Up and Cancel button */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
-/* Column container */
-.row {  
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
+/* =============================== */
+/* Button Theme Reddish Pink Color */
+.btn_crimson{
+    background-color: crimson;
+    color: white;
+}
+.btn_crimson:hover{
+    color: white;
 }
 
-/* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
-.side {
-    -ms-flex: 30%; /* IE10 */
-    flex: 30%;
-    background-color: #f1f1f1;
-    padding: 20px;
-}
+/* Footer Social Icons */
 
-/* Main column */
-.main {   
-    -ms-flex: 70%; /* IE10 */
-    flex: 70%;
-    background-color: white;
-    padding: 20px;
+[class$=ic]{
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 1.5rem;
 }
-
-/* Fake image, just for this example */
-.fakeimg {
-    background-color: #aaa;
-    width: 100%;
-    padding: 20px;
-}
-
-/* Footer */
-.footer {
-    padding: 20px;
+[class$=ic]:hover{
+    cursor: pointer;
     text-align: center;
-    background: #ddd;
+    background: rgba(51, 51, 51, 0.2);
+}
+.app-store{
+    width: 200px;
+    height: 50px;
 }
 
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 700px) {
-    .row {
-        flex-direction: column;
+  
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
     }
 }
 
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-    .navbar a {
-        float: none;
+@media screen and (max-width:768px) {
+    img {
+        width:100%;
+    }
+}
+
+/* ================ */
+/* Parallax Effect */
+.parallax-container{
+    height: 100%;
+    font-size: 1rem;
+    font-family: "Oswald", sans-serif;
+    font-weight: lighter;
+    line-height: 1.8em;
+    color: white;
+}
+
+.pimg1{
+    background-image: url('../images/blood_1.jpg');
+    min-height: 80vh;
+}
+.pimg2{
+    background-image: url('../images/blood_2.jpeg');
+    min-height: 80vh;
+}
+.pimg3{
+    background-image: url('../images/blood_3.jpg');
+    min-height: 80vh;
+}
+.pimg1, .pimg2, .pimg3{
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.section{
+    position: relative;
+    padding: 40px 80px;
+}
+.section-light{
+    background-color: white;
+    color: #111;
+}
+.section .block{
+    padding: 0 15%;
+    font-size: 14px;
+}
+.section .block h2{
+    text-transform: uppercase;
+    font-size: 28px;
+}
+#video-blood{
+    position: absolute;
+    right: 20%;
+    width: 28%;
+    height: 35%;
+}
+@media screen and (max-width: 680px){
+    #video-blood{
+        position: relative;
+        margin: 0 80px;
+        width: 100%;
+        padding: 0;
+    }
+    .section .block{
+        margin: 0;
+        padding:  10px 0;
         width: 100%;
     }
+}
+.block ul li{
+    padding: 0;
+    margin-left: 40px;
+    line-height: 1.2rem;
+}
+
+.ptext{
+    position: absolute;
+    top: 42%;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 4em;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+}
+
+.ptext .border{
+    color: #fff;
+    padding: 20px;
+}
+
+.ptext .border .trans{
+    background-color: transparent;
+}
+
+@media screen and (max-width: 568px){
+    .pimg1, .pimg2, .pimg3{
+        background-attachment: scroll;
+    }
+}
+
+/* ======================= */
+/* ===== About Page ====== */
+.team-icons i{
+    font-size: 25px;
+    margin: 15px 0;
+    color: #000;
+}
+.team-icons i:hover{
+    font-size: 25px;
+    margin: 15px 0;
+    color: #333;
+}
+
+.btn-dark{
+    background-color: #000;
+}
+
+.dev-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 200px;
 }

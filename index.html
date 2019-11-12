@@ -1,103 +1,197 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-<body>
+<head>
+<title>Blood Donation</title>
+<link rel="shortcut icon" href="./icons/fevicon.png" type="image/png">
+<link rel="stylesheet" href="./css/bootstrap-4.3.1.min.css">
+<link rel="stylesheet" href="./css/bootstrap-grid-4.3.1.min.css">
+<link rel="stylesheet" href="./css/bootstrap-reboot-4.3.1.min.css">
+<link rel="stylesheet" href="./css/font-awesome-5.11.2.min.css">
+<link rel="stylesheet" href="./css/style.css">
 
-    <div class="header">
-        <div class="slideshow-container">
-            <div class="mySlides fade">
-                <img src="http://getwallpapers.com/wallpaper/full/d/0/e/961668-free-download-wallpapers-wide-1920x1200-for-iphone-5.jpg" style="">
-                <div class="text">Caption One</div>
-            </div>
-            
-            <div class="mySlides fade">
-                <img src="https://i.pinimg.com/originals/07/00/b5/0700b59b0a405697a65f09fb414e75fe.jpg" style="width:100%">
-                <div class="text">Caption Two</div>
-            </div>
-            
-            <div class="mySlides fade">
-                <img src="https://monodomo.com/free-wallpapers/dark-nature-wallpaper-high-resolution-For-Free-Wallpaper-1.jpg" style="width:100%">
-                <div class="text">Caption Three</div>
-            </div>
+<script src="./js/jquery-3.4.1.min.js"></script>
+<script src="./js/angular-1.7.8.min.js"></script>
+<script src="./js/angular-route-1.7.8.min.js"></script>
+<script src="./js/font-awesome-5.11.2.min.js"></script>
+<script src="./js/popper-1.14.7.min.js"></script>
+<script src="./js/bootstrap-4.3.1.min.js"></script>
+<script src="./js/bootstrap.bundle-4.3.1.min.js"></script>
 
-            <div class="slide-indicator">
-                <span class="bar" onclick="currentSlide(1)"></span> 
-                <span class="bar" onclick="currentSlide(2)"></span> 
-                <span class="bar" onclick="currentSlide(3)"></span> 
-            </div>
-        </div>
-    </div>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <nav class="main-navbar" id="topNav">
-        <div class="left-span">
-            <a href="#home">Home</a>
-            <a href="#news">News</a>
-            <div class="dropdown">
-                <button class="dropbtn">Why Give Blood
-                <img src="icons/down-arrow.svg" style="width:10px; height: 10px;"></img>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </div>
-            <a href="#about" class="activeNav">About</a>        
-        </div>
-        <div class="right-span">
-            <input type="text" name="search" id="webSearch" placeholder="Search...">
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()" style="font-size:15px;">&#9776;</a>
-        </div>
-    </nav>
-    
-    <div class="row">
-        <div class="main">
-            <h2>TITLE HEADING</h2>
-            <h5>Title description, Dec 7, 2017</h5>
-            <div class="fakeimg" style="height:200px;">Image</div>
-            <p>Some text..</p>
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-            <br>
-            <h2>TITLE HEADING</h2>
-            <h5>Title description, Sep 2, 2017</h5>
-            <div class="fakeimg" style="height:200px;">Image</div>
-            <p>Some text..</p>
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        </div>
-        <div class="side">
-            <table border=3>
-                <tr>
-                    <td>
-                        <br><center><h3>LOGIN!!</h3><hr>
-                        <form method="post" action="#" name="frm">
-                            Username:<input type="text" name="a1"><br>
-                            Password: <input type="password" name="a2"><br>
-                            <center><input type="reset" value="Reset">
-                            <input type="submit" value="Login">
-                            </center>
-                        </form>
-                        Don't have an account??<br>
-                        <a href="#">Sign Up</a>
-                    </td>
-                </tr>
-            </table>
-            <h2>About Me</h2>
-            <h5>Photo of me:</h5>
-            <div class="fakeimg" style="height:200px;">Image</div>
-            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            <h3>More Text</h3>
-            <p>Lorem ipsum dolor sit ame.</p>
-            <div class="fakeimg" style="height:60px;">Image</div><br>
-            <div class="fakeimg" style="height:60px;">Image</div><br>
-            <div class="fakeimg" style="height:60px;">Image</div>
-        </div>
-    </div>
-    
-    <div class="footer">
-        <h2>Footer</h2>
-    </div>
-    
-    <script src="js/main.js"></script>
+</head>
+<body ng-app="bloodApp" style="background-color: rgb(224, 222, 222);">
+
+	<div id="signUp_form" class="modal" style>
+		<span onclick="document.getElementById('signUp_form').style.display='none'" class="close" title="Close Modal">&times;</span>
+		<form class="modal-content" name="userRegistration">
+			<div class="formContainer formHeader">
+				<h1 class="formHeader">Sign Up</h1>
+				<p class="formHeader">Please fill in this form to create an account.</p>
+				<hr>
+				<div class="alert alert-warning alert-dismissible fade close" id="suggestionAlert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<label for="email"><b>Email</b></label>
+				<input class="inp inp-txt" type="text" placeholder="Enter Email" name="email" autocomplete="on">
+			
+				<label for="psw"><b>Password</b></label>
+				<input class="inp inp-pass" type="password" placeholder="Enter Password" name="passw" autocomplete="off">
+			
+				<label for="psw-repeat"><b>Blood Group</b></label>
+				<input class="inp inp-txt" type="text" placeholder="Enter Blood Group" name="bloodGrp" autocomplete="on">
+				
+				<label>
+					<input class="inp inp-chk" type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+				</label>
+			
+				<p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Policy</a>.</p>
+			
+				<div class="clearfix">
+					<input class="inp inp-sub signupBtn" type="submit" value="Sign Up">
+					<input class="inp inp-btn cancelBtn" type="button" onclick="document.getElementById('signUp_form').style.display='none'" value="Cancel">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top nb">
+		<a href="#" class="navbar-brand"><img src="icons/logo.png" style="width: 150px;"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse text-center" id="navbarCollapse">
+			<ul class="navbar-nav ml-auto">
+				<li class="navbar-item "><a href="#/!" class="nav-link text-white pop-nav">Home</a></li>
+				<li class="navbar-item"><a href="#!whyBlood" class="nav-link text-white pop-nav">Why Give Blood</a></li>
+				<li class="navbar-item"><a href="#!banks" class="nav-link text-white pop-nav">Blood Banks</a></li>
+				<li class="navbar-item"><a href="#!events" class="nav-link text-white pop-nav">Donation Program</a></li>
+				<li class="navbar-item"><a href="#!about" class="nav-link text-white pop-nav">About</a></li>
+			</ul>	
+		</div>
+	</nav>
+
+	<!-- Navigation ends here -->
+	<!-- Main Content starts here -->
+	<main id="main-content" style="margin-top: 5%;" ng-view>
+		
+	</main>
+
+
+	<!-- Footer -->
+<footer class="page-footer font-small text-light" style="background: linear-gradient(to left bottom,#ee0d0d, #111 60%); box-shadow: 0px 0px 10px 4px #000;">
+
+	<div style="background: linear-gradient(to left,#ee0d0d , #111 70%); box-shadow: 0px 0px 4px 1px #000;">
+		<div class="container">
+	  
+			<!-- Grid row-->
+			<div class="row py-1 d-flex align-items-center">
+	  
+			  <!-- Grid column -->
+			  <div class="col-md-6 col-lg-5 text-center text-md-left mb-3 mb-md-0">
+				<h6 class="mb-0">Get connected with us on social networks!</h6>
+			  </div>
+			  <!-- Grid column -->
+	  
+			  <!-- Grid column -->
+			  <div class="col-md-6 col-lg-7 text-center text-md-right">
+				<!-- Facebook -->
+				<a class="fb-ic">
+				  <i class="fab fa-facebook-f white-text"> </i>
+				</a>
+				<!-- Twitter -->
+				<a class="tw-ic">
+				  <i class="fab fa-twitter white-text"> </i>
+				</a>
+				<!--Linkedin -->
+				<a class="li-ic">
+				  <i class="fab fa-linkedin white-text"> </i>
+				</a>
+				<!--Instagram-->
+				<a class="ins-ic">
+				  <i class="fab fa-instagram white-text"> </i>
+				</a>
+			  </div>
+			  <!-- Grid column -->
+			</div>
+			<!-- Grid row-->
+	  
+		</div>
+	</div>
+	  
+	<!-- Footer Links -->
+	<div class="container text-center text-md-left mt-5">
+		<!-- Grid row -->
+		<div class="row mt-1">
+			<!-- Grid column -->
+			<div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-1">
+				<!-- Content -->
+				<h6 class="text-uppercase font-weight-bold">BloodDonation</h6>
+				<hr class="deep-purple accent-2 mb-3 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p>
+					Lovely Professional University, Jalandhar - 144411
+				</p>
+				<p>
+					<i class="fas fa-envelope mr-2"></i>info@bloodislife.com
+				</p>
+				<p>
+					<i class="fas fa-phone mr-2"></i>+ 91 234 567 88
+				</p>
+			</div>
+			<!-- Grid column -->
+	
+			<!-- Grid column -->
+			<div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-1">
+				<!-- Links -->
+				<h6 class="text-uppercase font-weight-bold">Products</h6>
+				<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p>
+					<a href="#!"><img src="icons/apple_store.png" class="app-store" alt="Apple Store"></a>
+				</p>
+				<p>
+					<a href="#!"><img src="icons/google_store.png" class="app-store" alt="Google Store"></a>
+				</p>
+			</div>
+			<!-- Grid column -->
+
+			<!-- Grid column -->
+			<div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-1">
+				<!-- Links -->
+				<h6 class="text-uppercase font-weight-bold">Suggestions</h6>
+				<hr class="deep-white accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<div id="suggestionAlert" style="display: none;">
+					
+				</div>
+				<form id="suggestionForm" onsubmit="return suggestions()">
+					<div class="form-group">
+						<label for="suggestionText">Your Valuable Suggestion</label>
+						<textarea class="form-control" id="suggestionText" rows="3"></textarea>
+					</div>
+					<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input" id="suggestionCheck">
+						<label class="form-check-label" for="suggestionCheck">Check to Submit</label>
+					</div>
+					<button type="submit" class="btn" style="background: rgb(255, 255, 255); color: #eb0000; font-weight: bolder;">Submit</button>
+				</form>
+			</div>
+			<!-- Grid column -->
+		</div>
+		<!-- Grid row -->	
+	</div>
+	<!-- Footer Links -->
+	  
+	<!-- Copyright with Dynamic Year Generation -->
+	<div class="footer-copyright text-center py-3">&copy; <script>document.write(new Date().getFullYear());</script> Copyright | 
+		<a class="text-danger" href="#!"> BloodDonation</a>
+	</div>
+	<!-- Copyright -->
+	
+	</footer>
+	<!-- Footer -->
+
+	<script src="./js/main.js"></script>
 </body>
 </html>
