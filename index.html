@@ -19,24 +19,25 @@
 	<script src="./js/bootstrap.bundle-4.3.1.min.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<!-- Set this to Base Directory for Routing -->
+	<base href="/">
 </head>
 <body ng-app="bloodApp" style="background-color: rgb(224, 222, 222);">
 
 	<!-- Navigation starts here -->
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top nb">
-		<a href="#" class="navbar-brand"><img src="icons/logo.png" style="width: 150px;"></a>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top nb" ng-controller="navController">
+		<a href="#" class="navbar-brand"><img src="./icons/logo.png" style="width: 150px;"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<div class="collapse navbar-collapse text-center" id="navbarCollapse">
 			<ul class="navbar-nav ml-auto">
-				<li class="navbar-item active"><a href="#/!" class="nav-link text-white pop-nav">Home</a></li>
-				<li class="navbar-item"><a href="#!whyBlood" class="nav-link text-white pop-nav">Why Give Blood</a></li>
-				<li class="navbar-item"><a href="#!banks" class="nav-link text-white pop-nav">Blood Banks</a></li>
-				<li class="navbar-item"><a href="#!events" class="nav-link text-white pop-nav">Donation Program</a></li>
-				<li class="navbar-item"><a href="#!about" class="nav-link text-white pop-nav">About</a></li>
+				<li class="navbar-item" ng-class="{ active: isActive('/home')}"><a href="/home" class="nav-link text-white pop-nav">Home</a></li>
+				<li class="navbar-item" ng-class="{ active: isActive('/whyblood')}"><a href="/whyblood" class="nav-link text-white pop-nav">Why Give Blood</a></li>
+				<li class="navbar-item" ng-class="{ active: isActive('/banks')}"><a href="/banks" class="nav-link text-white pop-nav">Blood Banks</a></li>
+				<li class="navbar-item" ng-class="{ active: isActive('/donation')}"><a href="/donation" class="nav-link text-white pop-nav">Donation Program</a></li>
+				<li class="navbar-item" ng-class="{ active: isActive('/about')}"><a href="/about" class="nav-link text-white pop-nav">About</a></li>
 			</ul>	
 		</div>
 	</nav>

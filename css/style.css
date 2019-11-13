@@ -35,6 +35,7 @@
 .carousel-indicators .active {
     background-color: darkred;
 }
+
 #bloodCarousel{
     width: 100%;
     height: 580px;
@@ -63,20 +64,19 @@
 }
 
 .navbar-nav .active{
-    transform: scale(1.1);
     font-weight: bolder;
-    text-decoration: underline;
+    border-bottom: 2px solid white;
 }
 
+/* ============================= */
 /* Navigation Transition Effects */
 .pop-nav
 {
 	transition: .5s;
 }
 .pop-nav:hover{
-    text-decoration: underline;
-	transform: scale(1.1);
-	font-weight: bold;
+    font-weight: bold;
+    transform: scale(1.1);
 }
 
 /* ====================================== */
@@ -100,7 +100,7 @@
 }
 
 .pop-trans:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0px 0px 15px 5px #999;
 }
 
@@ -111,23 +111,6 @@
 }
 
 /* ======== Forms ============ */
-/* = Full-width input fields = */
-
-.inp-txt, .inp-pass {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-}
-  
-/* Add a background color when the inputs get focus */
-.inp-txt:focus, .inp-pass:focus {
-    background-color: #ddd;
-    outline: none;
-}
-
 /* ========= SignUp Form =========  */
 /* Float cancel and signup buttons and add an equal width */
 
@@ -149,14 +132,15 @@
     background-color: #fefefe;
     margin: 1% auto auto auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
+    border-radius: 20px;
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
 .close {
     position: absolute;
-    right: 35px;
-    top: 15px;
+    right: 2%;
+    top: 1%;
     font-size: 40px;
     font-weight: bold;
     color: #f11c1c;
@@ -167,49 +151,13 @@
     cursor: pointer;
 }
 
-/* Add padding to container elements */
-.formContainer {
-    padding: 12px;
-}
-
-/* ===== Form Header ======= */
-.formHeader{
-    background-color: #333;
-    color: #ddd;
-}
-
-.cancelBtn, .signupBtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    float: left;
-    width: 50%;
-    opacity: 0.9;
-}
-.cancelBtn:hover, .signupBtn:hover{
-    opacity: 1;
-}
-/* Extra styles for the cancel button */
-.cancelBtn {
-    padding: 14px 20px;
-    background-color: #f44336;
-} 
+/* ========================== */
 /* Style the horizontal ruler */
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
  
-/* Clear floats for Sign Up and Cancel button */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
 /* =============================== */
 /* Button Theme Reddish Pink Color */
 .btn_crimson{
@@ -220,6 +168,7 @@ hr {
     color: white;
 }
 
+/* =================== */
 /* Footer Social Icons */
 
 [class$=ic]{
@@ -237,14 +186,8 @@ hr {
     height: 50px;
 }
 
-  
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
-       width: 100%;
-    }
-}
-
+/* ================ */
+/* Responsive Image */
 @media screen and (max-width:768px) {
     img {
         width:100%;
@@ -307,7 +250,8 @@ hr {
 @media screen and (max-width: 680px){
     #video-blood{
         position: relative;
-        margin: 0 80px;
+        margin: auto;
+        margin-left: 4vw;
         width: 100%;
         padding: 0;
     }
@@ -328,8 +272,9 @@ hr {
     top: 42%;
     width: 100%;
     height: auto;
+    
     text-align: center;
-    font-size: 4em;
+    font-size: 5vw;
     letter-spacing: 10px;
     text-transform: uppercase;
 }

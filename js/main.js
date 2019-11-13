@@ -1,10 +1,10 @@
 // ======================
 // Navbar Active Link Changer
 
-$('.navbar-nav > li').on('click', function(e) {
-    $('.navbar-nav > li').removeClass('active');
-    $(this).addClass('active');
-});
+// $('.navbar-nav > li').on('click', function(e) {
+//     $('.navbar-nav > li').removeClass('active');
+//     $(this).addClass('active');
+// });
 
 // =======================
 // Read More Functionality
@@ -35,28 +35,26 @@ function openSignUp(){
 
 // =======================
 // Sign Up Form Validation
-
-$("#signUpBtn").submit(function(e) {
-    e.preventDefault();
-    console.log("Submission Tried");
-    var email = $("input[name='email']").val();
-    var password = $("input[name='passw']").val();
-    var bloodgrp = $("input[name='bloodGrp']").val();
-    var msg = "";
-    
-    if (email == '' || password == '' || bloodgrp == '') {
-        msg = "Please fill all fields!";
-        console.log(msg);
-    }
-    else if ((password.length) < 8) {
-        msg = "Password should at least 8 character in length!";
-        console.log(msg);
-    }
-    else {
-        msg = 'You have Successfully Registered...';
-        console.log(msg);
-        $("#userRegistration").reset();
-    }
+$(document).ready(function() {
+	$("#userRegis").click(function(event){
+        event.preventDefault();
+        alert("Hello World");
+        var form_data = $("#userRegis").serializeArray();
+        var error_free = true;
+        for (var input in form_data){
+            var element = $("#userReg_"+form_data[input]['name']);
+            var valid = element.hasClass("valid");
+            var error_element = $("span", element.parent());
+            if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+            else{error_element.removeClass("error_show").addClass("error");}
+        }
+        if (!error_free){
+            event.preventDefault(); 
+        }
+        else{
+            alert('No errors: Form will be submitted');
+        }
+    });
 });
 
 // ===========================
@@ -66,16 +64,21 @@ function suggestions(){
     var text = document.getElementById('suggestionText').value;
     var check = document.getElementById('suggestionCheck').checked;
     var warning = document.getElementById('suggestionAlert');
+
     if(check == true && text.length>5){
         warning.className = "alert alert-success";
         warning.innerHTML = "Suggestion Recorded!!";
-        warning.style.display = 'block';
     }
     else{
         warning.className = "alert alert-warning";
-        warning.innerHTML = "Must be at least 5 Characters!!";
-        warning.style.display = 'block';
+        if(check == false){
+            warning.innerHTML = "Please Check to Submit";
+        }
+        else{
+            warning.innerHTML = "Must be at least 5 Characters!!";
+        }
     }
+    warning.style.display = 'block';
     setTimeout(function(){
         warning.style.display = 'none';
     },2000);
@@ -89,12 +92,19 @@ function suggestions(){
 // also include ngRoute for all our routing needs
 var bloodApp = angular.module('bloodApp', ['ngRoute']);
 
+// NavController
+bloodApp.controller('navController',['$scope','$location',function($scope, $location){
+    $scope.isActive = function(destination){
+        return destination === $location.path();
+    }
+}]);
+
 // configure our routes
-bloodApp.config(function($routeProvider) {
+bloodApp.config(function($routeProvider,$locationProvider) {
     $routeProvider
 
     // route for the home page
-    .when('/', {
+    .when('/home', {
         templateUrl : 'Pages/home.html'
     })
 
@@ -103,16 +113,31 @@ bloodApp.config(function($routeProvider) {
         templateUrl : 'Pages/about.html'
     })
 
-    // route for the contact page
+    // route for the banks page
     .when('/banks', {
         templateUrl : 'Pages/banks.html'
     })
 
-    // route for the contact page
-    .when('/whyBlood', {
+    // route for the why Blood page
+    .when('/whyblood', {
         templateUrl : 'Pages/why blood.html'
     })
-    .when('/events', {
+
+    // route for the events page
+    .when('/donation', {
         templateUrl : 'Pages/donationProgram.html'
-    });
+    })
+
+    // default routing
+    .otherwise({redirectTo: '/home'});
+
+    $locationProvider.html5Mode(true);
 });
+
+// function to compare current active nav url
+function HeaderController($scope, $location) 
+{ 
+    $scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
+}
