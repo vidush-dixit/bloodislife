@@ -284,7 +284,7 @@ bloodApp.config(function($routeProvider,$locationProvider) {
 
     // route for the why Blood page
     .when('/whyblood', {
-        templateUrl : 'Pages/why blood.html'
+        templateUrl : 'Pages/whyblood.html'
     })
 
     // route for the events page
