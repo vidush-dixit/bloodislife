@@ -104,7 +104,7 @@ bloodApp.config(function($routeProvider,$locationProvider) {
     $routeProvider
 
     // route for the home page
-    .when('/', {
+    .when('/home', {
         templateUrl : 'Pages/home.html'
     })
 
@@ -127,6 +127,11 @@ bloodApp.config(function($routeProvider,$locationProvider) {
     .when('/donation', {
         templateUrl : 'Pages/donationProgram.html'
     })
+
+    // default routing
+    .otherwise({redirectTo: '/home'});
+
+    $locationProvider.html5Mode(true);
 });
 
 // function to compare current active nav url
