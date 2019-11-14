@@ -39,59 +39,59 @@
 
 <div id="form-wrap" class="modal">
     <span onclick="document.getElementById('form-wrap').style.display='none'" class="close" title="Close Modal">&times;</span>
-    <form id="userRegis" class="modal-content bg-dark text-light">
-        <div class="px-4 py-3">
+    <form name="userRegis" class="modal-content bg-dark text-light" onsubmit="return createNewUser();">
+        <div class="px-4 py-1">
             <h1 class="formHeader">Sign Up</h1>
             <p class="formHeader">Please fill in this form to create an account.</p>
-            <hr>
             
             <!-- Show Sign Up Alerts -->
-            <div id="signUpAlert"></div>
+            <div class="h-25" id="signUpAlert"></div>
+            <hr>
     
             <div class="form-group">
                     <label for="Name">Full Name</label>
-                    <input type="text" class="form-control" name="name" id="userRegis_name" placeholder="Full Name">
+                    <input type="text" class="form-control" name="name" placeholder="Full Name">
             </div>
     
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="Email">Email</label>
-                    <input type="email" class="form-control" name="email" id="userRegis_email" placeholder="Email">
+                    <input type="text" class="form-control" name="email" placeholder="Email">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="Phone">Phone</label>
-                    <input type="tel" class="form-control" name="phone" id="userRegis_phone" placeholder="Phone">
+                    <input type="tel" class="form-control" name="phone" placeholder="Phone">
                 </div>
             </div>
             
             <div class="form-group">
                 <label for="BloodGroup"><b>Blood Group</b></label>
-                <select id="userRegis_state" name="state" class="form-control">
-                    <option value="" selected>Choose..</option>
+                <select name="BloodGroup" class="form-control">
+                    <option value="Select" selected>Choose..</option>
                     <option value="A+">A+</option><option value="A-">A-</option><option value="A1+">A1+</option><option value="A1-">A1-</option><option value="A1B+">A1B+</option><option value="A1B-">A1B-</option><option value="A2+">A2+</option><option value="A2-">A2-</option><option value="A2B+">A2B+</option><option value="A2B-">A2B-</option><option value="AB+">AB+</option><option value="AB-">AB-</option><option value="B+">B+</option><option value="B-">B-</option><option value="O+">O+</option><option value="O-">O-</option>
                 </select>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="Password">Password</label>
-                    <input type="password" class="form-control" name="password" id="userRegis_password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" placeholder="Password">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="ConfirmPassword">Confirm Password</label>
-                    <input type="password" class="form-control" name="confirmPassword" id="userRegis_confirmPassword" placeholder="Confirm Password">
+                    <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="userRegis_check">
+                <input class="form-check-input" type="checkbox" name="signUpCheck">
                 <label class="form-check-label" for="gridCheck">
-                        By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Policy</a>.
+                        By creating an account you agree to our <a href="#/!" style="color:dodgerblue">Terms & Policy</a>.
                 </label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <button type="submit" class="btn btn-success w-100" id="userRegis_submit" ng-click="CreateNewUser()">Register</button>
+                    <button type="submit" class="btn btn-success w-100">Register</button>
                 </div>
                 <div class="form-group col-md-6">
                     <button type="reset" class="btn btn-danger w-100">Reset</button>

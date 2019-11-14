@@ -1,14 +1,202 @@
+// =========================
+// Validation functions
+
+// Email Validation
+function email_validation(uEmail,alertWrap)
+{
+    var alertText;
+    var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(uEmail.value.match(mailFormat)){
+        return true;
+    }
+    else{
+        alertText = "Please enter valid Email address!";
+        showAlert(alertWrap,"alert alert-danger",alertText);
+        uEmail.focus();
+        return false;
+    }
+}
+
+// Phone Validation
+function phone_validation(uDial,alertWrap)
+{
+    var alertText;
+    var phoneFormat = /^\d{10}$/;
+    if(uDial.value.match(phoneFormat)){
+        return true;
+    }
+    else{
+        alertText = "Not a valid Phone Number";
+        showAlert(alertWrap,"alert alert-danger",alertText);
+        uDial.focus();
+        return false;
+    }
+}
+
+// Password Validation
+function pass_validation(pwd,alertWrap)
+{
+    var alertText;
+    var pass_len = pwd.value.length;
+    var min_length = 6;
+    var max_length = 100;
+    var passTest = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    
+    if (pass_len == 0 || pass_len >= max_length || pass_len < min_length){
+        alertText = "Password should not be empty / length be between "+min_length+" to "+max_length;
+        showAlert(alertWrap,"alert alert-danger",alertText);
+        pwd.focus();
+        return false;
+    }
+    else{
+        if (pwd.value.match(passTest)){
+        return true;   
+        }
+        else{
+            alertText = "Must contain at least 1 lowercase letter, uppercase letter, numeric digit, and special character";
+            showAlert(alertWrap,"alert alert-danger",alertText);
+            pwd.focus();
+            return false;
+        }
+    }
+}
+
+// Confirm Password and Password must match
+function confirmPass_Validation(re_pass,pswd,alertWrap)
+{
+    var alertText;
+    if(re_pass.value != pswd.value){
+        alertText = "Confirm Password must match Password";
+        showAlert(alertWrap,"alert alert-danger",alertText);
+        re_pass.focus();
+        return false;
+    }
+    return true;
+}
+
+// Full Name Validation
+function name_validation(uName,alertWrap)
+{ 
+    var alertText;
+    var letters = /^[A-Za-z]+$/;
+    if(uName.value.match(letters)){
+        return true;
+    }
+    else{
+        alertText = "Name can't be empty and must contain Alphabets only";
+        showAlert(alertWrap,"alert alert-danger",alertText);
+        uName.focus();
+        return false;
+    }
+}
+
+// Blood Group Validation
+function bloodSelect(bloodType,alertWrap)
+{
+    var alertText;
+    if(bloodType.value == "Select"){
+        alertText = 'Select your Blood Group from the list';
+        showAlert(alertWrap,"alert alert-danger",alertText);
+        bloodType.focus();
+        return false;
+    }
+    return true;
+}
+
+// =======================
+// Sign Up Form Validation
+function createNewUser(){
+    var name = document.userRegis.name;
+    var email = document.userRegis.email;
+    var phone = document.userRegis.phone;
+    var bldGrp = document.userRegis.BloodGroup;
+    var pass = document.userRegis.password;
+    var con_pass = document.userRegis.confirmPassword;
+    var newCheck = document.userRegis.signUpCheck;
+    var userAlert = document.getElementById('signUpAlert');
+    var alertText;
+
+    if(name_validation(name,userAlert)){
+        if(email_validation(email,userAlert)){
+            if(phone_validation(phone,userAlert)){
+                if(bloodSelect(bldGrp,userAlert)){ 
+                    if(pass_validation(pass,userAlert)){
+                        if(confirmPass_Validation(con_pass,pass,userAlert)){
+                            if(newCheck.checked){
+                                alertText = "Form Submitted successfully";
+                                showAlert(userAlert,"alert alert-success",alertText);
+                            }
+                            else{
+                                alertText = "Please check Terms & Agreement";
+                                showAlert(userAlert,"alert alert-danger",alertText);
+                            }
+                        }
+                    } 
+                }
+            }
+        }
+    }
+    return false;
+}
+
+// ===========================
+// Suggestions Form Validation
+
+function suggestions(){
+    var text = document.getElementById('suggestionText').value;
+    var check = document.getElementById('suggestionCheck').checked;
+    var sugAlert = document.getElementById('suggestionAlert');
+
+    if(check == true && text.length>5){
+        sugAlert.className = "alert alert-success";
+        sugAlert.innerHTML = "Suggestion Recorded!!";
+    }
+    else{
+        sugAlert.className = "alert alert-warning";
+        if(check == false){
+            sugAlert.innerHTML = "Please Check to Submit";
+        }
+        else{
+            sugAlert.innerHTML = "Must be at least 5 Characters!!";
+        }
+    }
+    sugAlert.style.display = 'block';
+    setTimeout(function(){
+        sugAlert.style.display = 'none';
+    },2000);
+    document.getElementById('suggestionForm').reset();
+}
+
+// =========================
+// Toggle AlertBox Container
+function showAlert(tempAlert,tempClass,tempText){
+    tempAlert.className = tempClass;
+    tempAlert.innerHTML = tempText;
+    tempAlert.style.display = 'block';
+    setTimeout(function(){
+        tempAlert.style.display = 'none';
+    },2000);
+}
+
+
+// ===========================
+// SignUp Form Container Toggle
+function openSignUp(){
+    var modal = document.getElementById('form-wrap');
+    modal.style.display='block';
+}
+
+
 // ======================
 // Navbar Active Link Changer
-
 $('.navbar-nav > li').on('click', function(e) {
     $('.navbar-nav > li').removeClass('active');
     $(this).addClass('active');
 });
 
+
 // =======================
 // Read More Functionality
-
 function readMore(x) {
     var dots = document.getElementById("dotsText"+x);
     var moreText = document.getElementById("moreText"+x);
@@ -25,65 +213,6 @@ function readMore(x) {
     }
 }
 
-// ===========================
-// SignUp Form Container Toggle
-
-function openSignUp(){
-    var modal = document.getElementById('form-wrap');
-    modal.style.display='block';
-}
-
-// =======================
-// Sign Up Form Validation
-$(document).ready(function() {
-	$("#userRegis").click(function(event){
-        event.preventDefault();
-        alert("Hello World");
-        var form_data = $("#userRegis").serializeArray();
-        var error_free = true;
-        for (var input in form_data){
-            var element = $("#userReg_"+form_data[input]['name']);
-            var valid = element.hasClass("valid");
-            var error_element = $("span", element.parent());
-            if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
-            else{error_element.removeClass("error_show").addClass("error");}
-        }
-        if (!error_free){
-            event.preventDefault(); 
-        }
-        else{
-            alert('No errors: Form will be submitted');
-        }
-    });
-});
-
-// ===========================
-// Suggestions Form Validation
-
-function suggestions(){
-    var text = document.getElementById('suggestionText').value;
-    var check = document.getElementById('suggestionCheck').checked;
-    var warning = document.getElementById('suggestionAlert');
-
-    if(check == true && text.length>5){
-        warning.className = "alert alert-success";
-        warning.innerHTML = "Suggestion Recorded!!";
-    }
-    else{
-        warning.className = "alert alert-warning";
-        if(check == false){
-            warning.innerHTML = "Please Check to Submit";
-        }
-        else{
-            warning.innerHTML = "Must be at least 5 Characters!!";
-        }
-    }
-    warning.style.display = 'block';
-    setTimeout(function(){
-        warning.style.display = 'none';
-    },2000);
-    document.getElementById('suggestionForm').reset();
-}
 
 // ===========================
 // Angular JS Code Starts Here
