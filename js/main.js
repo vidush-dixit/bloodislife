@@ -1,10 +1,10 @@
 // ======================
 // Navbar Active Link Changer
 
-// $('.navbar-nav > li').on('click', function(e) {
-//     $('.navbar-nav > li').removeClass('active');
-//     $(this).addClass('active');
-// });
+$('.navbar-nav > li').on('click', function(e) {
+    $('.navbar-nav > li').removeClass('active');
+    $(this).addClass('active');
+});
 
 // =======================
 // Read More Functionality
@@ -92,19 +92,12 @@ function suggestions(){
 // also include ngRoute for all our routing needs
 var bloodApp = angular.module('bloodApp', ['ngRoute']);
 
-// NavController
-bloodApp.controller('navController',['$scope','$location',function($scope, $location){
-    $scope.isActive = function(destination){
-        return destination === $location.path();
-    }
-}]);
-
 // configure our routes
 bloodApp.config(function($routeProvider,$locationProvider) {
     $routeProvider
 
     // route for the home page
-    .when('/home', {
+    .when('/', {
         templateUrl : 'Pages/home.html'
     })
 
@@ -120,24 +113,11 @@ bloodApp.config(function($routeProvider,$locationProvider) {
 
     // route for the why Blood page
     .when('/whyblood', {
-        templateUrl : 'Pages/whyblood.html'
+        templateUrl : 'Pages/why blood.html'
     })
 
     // route for the events page
     .when('/donation', {
         templateUrl : 'Pages/donationProgram.html'
-    })
-
-    // default routing
-    .otherwise({redirectTo: '/home'});
-
-    $locationProvider.html5Mode(true);
+    });
 });
-
-// function to compare current active nav url
-function HeaderController($scope, $location) 
-{ 
-    $scope.isActive = function (viewLocation) { 
-        return viewLocation === $location.path();
-    };
-}
